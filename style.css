@@ -1,12 +1,13 @@
 .home {
   position: absolute;
   top: 35%;
+  margin: auto;
 }
 
 .exchange-box {
   border: 1px solid black;
-  width: 250px;
-  height: 120px;
+  width: 400px;
+  height: 170px;
   justify-content: center;
 }
 
@@ -15,11 +16,18 @@
 }
 
 .input-area input {
-  width: 79%;
+  width: 80%;
   /* border: none; */
-  margin-left: 4px;
-  margin-right: 4px;
-  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 32px;
+}
+
+.input-area span {
+  font-size: 20px;
+  margin-right: 10px;
 }
 
 input::-webkit-outer-spin-button,
@@ -35,10 +43,10 @@ input::-webkit-inner-spin-button {
 
 /* Style The Dropdown Button */
 .dropbtn {
-  background-color: wheat;
+  background-color: white;
   color: black;
   padding: 10px;
-  font-size: 16px;
+  font-size: 30px;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -78,8 +86,7 @@ input::-webkit-inner-spin-button {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: wheat;
+  background-color: white;
 }

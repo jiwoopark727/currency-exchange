@@ -1,5 +1,3 @@
-//3. 환율정보 들고오기
-// 4. 아이템 선택하면 그걸로 바뀌기
 // 5. 금액을 입력하면 환전이 된다.그걸로
 // 6. 드롭다운 리스트에서 아이템을 선택하면 다시 그 단위 기준으로 환전됨
 // 7. 숫자를 한국어로 읽어주기
@@ -36,6 +34,14 @@ document.querySelectorAll('#from-currency-list a').forEach(menu=>menu.addEventLi
 
   //클릭한 메뉴의 값을 변수에 저장해두기
   fromCurrency = this.textContent;
+
+  //리스트에서 선택한 화폐 단위로 바꿔주기
+  document.getElementById("from-unit").textContent = currencyRatio[fromCurrency].unit;
+
+  //리스트에서 화폐 하나 선택하면 리스트 닫기
+
+  //버튼 누를 때 마다도 환전 최신화
+  convertTo();
 }))
 
 document.querySelectorAll('#to-currency-list a').forEach(menu=>menu.addEventListener("click",function(){
@@ -43,5 +49,26 @@ document.querySelectorAll('#to-currency-list a').forEach(menu=>menu.addEventList
   document.getElementById("to-button").textContent = this.textContent;
 
   //클릭한 메뉴의 값을 변수에 저장해두기
-  fromCurrency = this.textContent;
+  toCurrency = this.textContent;
+
+   //리스트에서 선택한 화폐 단위로 바꿔주기
+  document.getElementById("to-unit").textContent = currencyRatio[toCurrency].unit;
+
+  //리스트에서 화폐 하나 선택하면 리스트 닫기
+
+  //버튼 누를 때 마다도 환전 최신화
+  convert();
 }))
+
+
+function convert(){
+  //1. base금액
+  //2. 어떤 화폐인지
+  //3. 돈 * 환율 = 환전금액
+  let amount = document.getElementById("from-input").value;
+  
+  let convertedAmount = amount * currencyRatio[fromCurrency][toCurrency];
+  console.log(convertedAmount);
+
+  document.getElementById("to-input").value = convertedAmount;
+}

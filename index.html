@@ -11,15 +11,20 @@
   <div class='home'>
     <div class='exchange-box'>
       <div class="dropdown">
-        <button class="dropbtn" id='from-button'>USD</button>
+        <button class="dropbtn" id='from-button'>USD<span></span></button>
         <div class="dropdown-content" id='from-currency-list'>
           <a href="#">USD</a>
           <a href="#">KRW</a>
           <a href="#">VND</a>
+          <a href="#">EUR</a>
+          <a href="#">JPY</a>
+          <a href="#">GBP</a>
+          <a href="#">CNY</a>
         </div>
       </div>
       <div class='input-area'>
-        <input type='number'/><span>달러</span>
+        <input type='number' id='from-input' onkeyup='convert()'/>
+        <span id='from-unit'>달러</span>
       </div>
     </div>
   
@@ -32,10 +37,15 @@
           <a href="#">USD</a>
           <a href="#">KRW</a>
           <a href="#">VND</a>
+          <a href="#">EUR</a>
+          <a href="#">JPY</a>
+          <a href="#">GBP</a>
+          <a href="#">CNY</a>
         </div>
       </div>
       <div class='input-area'>
-        <input type='number'/><span>달러</span>
+        <input type='number' id='to-input'/>
+        <span id='to-unit'>달러</span>
       </div>
     </div>
   </div>
