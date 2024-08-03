@@ -13,8 +13,6 @@ let currencyRatio = {
     VND:25219.50,
     EUR:0.92,
     JPY:146.60,
-    GBP:0.78,
-    CNY:7.16,
     unit:"달러"
   },
   KRW:{
@@ -23,8 +21,6 @@ let currencyRatio = {
     VND:18.36,
     EUR:0.00067,
     JPY:0.11,
-    GBP:0.000575,
-    CNY:0.0053,
     unit:"원"
   },
   VND:{
@@ -33,8 +29,6 @@ let currencyRatio = {
     KRW:0.054,
     EUR:0.000036,
     JPY:0.0058,
-    GBP:0.000031,
-    CNY:0.00028,
     unit:"동"
   },
   EUR:{
@@ -43,8 +37,6 @@ let currencyRatio = {
     VND:27528.68,
     EUR:1,
     JPY:160.03,
-    GBP:0.85,
-    CNY:7.82,
     unit:"유로"
   },
   JPY:{
@@ -53,30 +45,8 @@ let currencyRatio = {
     VND:172.03,
     EUR:0.0062,
     JPY:1,
-    GBP:0.0053,
-    CNY:0.049,
     unit:"옌"
   },
-  GBP:{
-    USD:1.28,
-    KRW:1739.15,
-    VND:32294.77,
-    EUR:1.17,
-    JPY:187.86,
-    GBP:1,
-    CNY:9.17,
-    unit:"파운드"
-  },
-  CNY:{
-    USD:0.14,
-    KRW:189.71,
-    VND:3522.39,
-    EUR:0.13,
-    JPY:20.48,
-    GBP:0.11,
-    CNY:1,
-    unit:"위안"
-  }
 }
 
 let fromCurrency = 'USD'
