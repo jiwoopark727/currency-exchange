@@ -17,7 +17,6 @@
 
 .input-area input {
   width: 80%;
-  /* border: none; */
   margin-left: 10px;
   margin-right: 5px;
   margin-top: 15px;
@@ -43,14 +42,26 @@ input::-webkit-inner-spin-button {
 
 /* Style The Dropdown Button */
 .dropbtn {
-  background-color: white;
+  background-color: rgb(255, 192, 192);
   color: black;
   padding: 10px;
-  font-size: 30px;
+  font-size: 24px;
   border: none;
   cursor: pointer;
   width: 100%;
   border-bottom: solid 1px black;
+  display: flex; /* 플렉스 박스 사용 */
+  justify-content: space-between; /* 공간을 균등하게 배분 */
+  align-items: center; /* 세로 가운데 정렬 */
+}
+
+.dropbtn span {
+  display: flex;
+  align-items: center;
+}
+
+.dropbtn i {
+  margin-left: 40px; /* 텍스트와 아이콘 사이 간격 조정 */
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -82,11 +93,18 @@ input::-webkit-inner-spin-button {
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #f1f1f1}
 
+
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
   display: block;
-}
+} */
+
+
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: white;
+  background-color: rgb(255, 192, 192);
+}
+
+.fa-arrow-down {
+  font-size: 80%;
 }
