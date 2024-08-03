@@ -1,7 +1,24 @@
+body {
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+  background-image: url('/환전소\ 로고.png'); /* 배경 이미지 경로 */
+  background-position: center 34%; /* 이미지 중앙 정렬 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+}
+
+.head {
+  background-image: url(/환전소\ 로고.png);
+}
+
 .home {
   position: absolute;
   top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
   margin: auto;
+  background-color: rgba(255, 255, 255, 0.8); /* 투명한 흰색 배경을 추가해 가독성 향상 */
+  padding: 20px; /* 내부 여백 추가 */
+  border-radius: 10px; /* 모서리 둥글게 처리 */
 }
 
 .exchange-box {
@@ -9,7 +26,9 @@
   width: 400px;
   height: 170px;
   justify-content: center;
+  margin-bottom: 20px; /* 박스 간격 추가 */
 }
+
 
 .input-area {
   width: 100%;
@@ -42,7 +61,7 @@ input::-webkit-inner-spin-button {
 
 /* Style The Dropdown Button */
 .dropbtn {
-  background-color: rgb(255, 192, 192);
+  background-color: lightgray ;
   color: black;
   padding: 10px;
   font-size: 24px;
@@ -102,7 +121,7 @@ input::-webkit-inner-spin-button {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: rgb(255, 192, 192);
+  background-color: lightgray;
 }
 
 .fa-arrow-down {
