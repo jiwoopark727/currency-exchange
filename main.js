@@ -74,6 +74,9 @@ document.querySelectorAll('#from-currency-list a').forEach(menu=>menu.addEventLi
   //리스트에서 선택한 화폐 단위로 바꿔주기
   document.getElementById("from-unit").textContent = currencyRatio[fromCurrency].unit;
 
+  //리스트에서 선택한 화폐 단위로 밑에 읽어주는 부분도
+  document.getElementById("from-display").textContent =  currencyRatio[fromCurrency].unit;
+
   //리스트에서 화폐 하나 선택하면 리스트 닫기
   document.getElementById('from-currency-list').style.display = "none";
 
@@ -91,6 +94,9 @@ document.querySelectorAll('#to-currency-list a').forEach(menu=>menu.addEventList
    //리스트에서 선택한 화폐 단위로 바꿔주기
   document.getElementById("to-unit").textContent = currencyRatio[toCurrency].unit;
 
+  //리스트에서 선택한 화폐 단위로 밑에 읽어주는 부분도
+  document.getElementById("to-display").textContent =  currencyRatio[toCurrency].unit;
+
   //리스트에서 화폐 하나 선택하면 리스트 닫기
   document.getElementById('to-currency-list').style.display = "none";
 
@@ -106,7 +112,7 @@ function convert(){
   //2. 어떤 화폐인지
   //3. 돈 * 환율 = 환전금액
   let amount = document.getElementById("from-input").value;
-  
+  // for(let i = 0; i < amount/)
   let convertedAmount = amount * currencyRatio[fromCurrency][toCurrency];
 
   document.getElementById("to-input").value = convertedAmount;
