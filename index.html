@@ -11,21 +11,20 @@
   <div class='home'>
     <div class='exchange-box'>
       <div class="dropdown">
-        <button class="dropbtn" id='from-button'>USD<span><i class="fa-solid fa-arrow-down"></i></span></button>
+        <button class="dropbtn" id='from-button'>미국USD<span><i class="fa-solid fa-arrow-down"></i></span></button>
         <div class="dropdown-content" id='from-currency-list'>
-          <a href="#">USD</a>
-          <a href="#">KRW</a>
-          <a href="#">VND</a>
-          <a href="#">EUR</a>
-          <a href="#">JPY</a>
+          <a href="#">미국USD</a>
+          <a href="#">한국KRW</a>
+          <a href="#">베트남VND</a>
+          <a href="#">유럽EUR</a>
+          <a href="#">일본JPY</a>
         </div>
       </div>
       <div class='input-area'>
-        <input type='number' id='from-input' onkeyup='convert()' autocomplete="off" value='1'/>
-        <span id='from-unit'>달러</span>
+        <input type='number' id='from-input' onkeyup='convert()' autocomplete="off" value='1' onfocus="clearInput(this)"/>
       </div>
       <div class='from-display' id='from-display'>
-        달러
+        1 달러
       </div>
     </div>
   
@@ -33,21 +32,20 @@
 
     <div class='exchange-box'>
       <div class="dropdown">
-        <button class="dropbtn" id='to-button'>USD<span><i class="fa-solid fa-arrow-down"></i></span></button>
+        <button class="dropbtn" id='to-button'>한국KRW<span><i class="fa-solid fa-arrow-down"></i></span></button>
         <div class="dropdown-content" id='to-currency-list'>
-          <a href="#">USD</a>
-          <a href="#">KRW</a>
-          <a href="#">VND</a>
-          <a href="#">EUR</a>
-          <a href="#">JPY</a>
+          <a href="#">미국USD</a>
+          <a href="#">한국KRW</a>
+          <a href="#">베트남VND</a>
+          <a href="#">유럽EUR</a>
+          <a href="#">일본JPY</a>
         </div>
       </div>
       <div class='input-area'>
-        <input type='number' id='to-input' autocomplete="off" value='1'/>
-        <span id='to-unit'>달러</span>
+        <input type='number' id='to-input' onkeyup='convertReverse()' autocomplete="off" value='1' onfocus="clearInput(this)"/>
       </div>
       <div class='to-display' id='to-display'>
-        달러
+        1373.86 원
       </div>
     </div>
   </div>

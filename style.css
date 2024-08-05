@@ -13,10 +13,10 @@ body {
 .home {
   position: absolute;
   top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 37.75%;
+  transform: translateY(-10%);
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.9); /* 투명한 흰색 배경을 추가해 가독성 향상 */
+  background-color: rgba(255, 255, 255, 0.8); /* 투명한 흰색 배경을 추가해 가독성 향상 */
   padding: 10px; /* 내부 여백 추가 */
   border-radius: 10px; /* 모서리 둥글게 처리 */
 }
@@ -24,10 +24,8 @@ body {
 .exchange-box {
   border: 1px solid black;
   width: 400px;
-  height: 170px;
+  height: 130px;
   justify-content: center;
-  transform: translateY();
-  margin-bottom: 20px; /* 박스 간격 추가 */
   size: 50%;
 }
 
@@ -37,20 +35,13 @@ body {
 }
 
 .input-area input {
-  width: 80%;
+  width: 93%;
   margin-left: 10px;
-  margin-right: 5px;
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   height: 32px;
   text-align: right;
-}
-
-.input-area span {
-  font-size: 12px;
-  margin-right: 27px;
-  margin-top: 25px;
-  float: right;
+  font-weight: bold;
 }
 
 input::-webkit-outer-spin-button,
@@ -62,11 +53,13 @@ input::-webkit-inner-spin-button {
 .equal-sign {
   text-align: center;
   justify-content: center;
+  margin-top: 0px;
+  margin-bottom: 5px;
 }
 
 /* Style The Dropdown Button */
 .dropbtn {
-  background-color: lightgray ;
+  background-color: rgb(255, 255, 255) ;
   color: black;
   padding: 10px;
   font-size: 24px;
@@ -126,7 +119,7 @@ input::-webkit-inner-spin-button {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: lightgray;
+  background-color: rgb(111, 197, 255);
 }
 
 .fa-arrow-down {
@@ -135,17 +128,14 @@ input::-webkit-inner-spin-button {
 
 .from-display {
   margin-left: 12px;
-  margin-top: 15px;
-  margin-right: 27px;
+  margin-right: 13px;
   font-size: 12px;
   float: right;
 }
 
 .to-display {
   margin-left: 12px;
-  margin-top: 15px;
-  margin-right: 27px;
-  margin-bottom: 2px;
+  margin-right: 13px;
   font-size: 12px;
   float: right;
 }

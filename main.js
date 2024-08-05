@@ -7,50 +7,50 @@
 
 //환율 정보들
 let currencyRatio = {
-  USD:{
-    USD:1,
-    KRW:1373.86,
-    VND:25219.50,
-    EUR:0.92,
-    JPY:146.60,
+  미국USD:{
+    미국USD:1,
+    한국KRW:1373.86,
+    베트남VND:25219.50,
+    유럽EUR:0.92,
+    일본JPY:146.60,
     unit:"달러"
   },
-  KRW:{
-    KRW:1,
-    USD:0.00073,
-    VND:18.36,
-    EUR:0.00067,
-    JPY:0.11,
+  한국KRW:{
+    한국KRW:1,
+    미국USD:0.00073,
+    베트남VND:18.36,
+    유럽EUR:0.00067,
+    일본JPY:0.11,
     unit:"원"
   },
-  VND:{
-    VND:1,
-    USD:0.00004,
-    KRW:0.054,
-    EUR:0.000036,
-    JPY:0.0058,
+  베트남VND:{
+    베트남VND:1,
+    미국USD:0.00004,
+    한국KRW:0.054,
+    유럽EUR:0.000036,
+    일본JPY:0.0058,
     unit:"동"
   },
-  EUR:{
-    USD:1.09,
-    KRW:1483.20,
-    VND:27528.68,
-    EUR:1,
-    JPY:160.03,
+  유럽EUR:{
+    미국USD:1.09,
+    한국KRW:1483.20,
+    베트남VND:27528.68,
+    유럽EUR:1,
+    일본JPY:160.03,
     unit:"유로"
   },
-  JPY:{
-    USD:0.0068,
-    KRW:9.26,
-    VND:172.03,
-    EUR:0.0062,
-    JPY:1,
+  일본JPY:{
+    미국USD:0.0068,
+    한국KRW:9.26,
+    베트남VND:172.03,
+    유럽EUR:0.0062,
+    일본JPY:1,
     unit:"옌"
   },
 }
 
-let fromCurrency = 'USD'
-let toCurrency = 'USD'
+let fromCurrency = '미국USD'
+let toCurrency = '한국KRW'
 
 
 //나라 선택 버튼 클릭시 드롭다운 리스트 출현
@@ -65,55 +65,70 @@ document.getElementById('to-button').addEventListener('click',function(){
 
 
 document.querySelectorAll('#from-currency-list a').forEach(menu=>menu.addEventListener("click",function(){
-  //버튼 가져와서 클릭한 메뉴의 값을 텍스트를 교체
-  document.getElementById("from-button").textContent = this.textContent;
 
-  //클릭한 메뉴의 값을 변수에 저장해두기
-  fromCurrency = this.textContent;
+  document.getElementById("from-button").textContent = this.textContent;   //버튼 가져와서 클릭한 메뉴의 값을 텍스트를 교체
 
-  //리스트에서 선택한 화폐 단위로 바꿔주기
-  document.getElementById("from-unit").textContent = currencyRatio[fromCurrency].unit;
+  fromCurrency = this.textContent;   //클릭한 메뉴의 값을 변수에 저장해두기
 
-  //리스트에서 선택한 화폐 단위로 밑에 읽어주는 부분도
-  document.getElementById("from-display").textContent =  currencyRatio[fromCurrency].unit;
+  document.getElementById("from-display").textContent =  currencyRatio[fromCurrency].unit;   //리스트에서 선택한 화폐 단위로 밑에 읽어주는 부분
 
-  //리스트에서 화폐 하나 선택하면 리스트 닫기
-  document.getElementById('from-currency-list').style.display = "none";
+  document.getElementById('from-currency-list').style.display = "none";   //리스트에서 화폐 하나 선택하면 리스트 닫기
 
-  //버튼 누를 때 마다도 환전 최신화
-  convert();
+  convert();    //버튼 누를 때 마다도 환전 최신화
 }))
 
 document.querySelectorAll('#to-currency-list a').forEach(menu=>menu.addEventListener("click",function(){
-  //버튼 가져와서 클릭한 메뉴의 값을 텍스트를 교체
-  document.getElementById("to-button").textContent = this.textContent;
 
-  //클릭한 메뉴의 값을 변수에 저장해두기
-  toCurrency = this.textContent;
+  document.getElementById("to-button").textContent = this.textContent;    //버튼 가져와서 클릭한 메뉴의 값을 텍스트를 교체
 
-   //리스트에서 선택한 화폐 단위로 바꿔주기
-  document.getElementById("to-unit").textContent = currencyRatio[toCurrency].unit;
+  toCurrency = this.textContent;    //클릭한 메뉴의 값을 변수에 저장해두기
 
-  //리스트에서 선택한 화폐 단위로 밑에 읽어주는 부분도
-  document.getElementById("to-display").textContent =  currencyRatio[toCurrency].unit;
+  document.getElementById("to-display").textContent =  currencyRatio[toCurrency].unit;    //리스트에서 선택한 화폐 단위로 밑에 읽어주는 부분
 
-  //리스트에서 화폐 하나 선택하면 리스트 닫기
-  document.getElementById('to-currency-list').style.display = "none";
+  document.getElementById('to-currency-list').style.display = "none";   //리스트에서 화폐 하나 선택하면 리스트 닫기
 
-  //버튼 누를 때 마다도 환전 최신화
-  convert();
+  convert();    //버튼 누를 때 마다도 환전 최신화
+  convertReverse();     //아래 수정해도 위에 환전 최신화
 }))
 
+function clearInput(input) {
+  if (input.value === '1') {
+      input.value = '';
+  }
+}
 
-//환전 계산 함수
+//환전 계산 함수 위->아래
 function convert(){
   //환전 알고리즘
   //1. base금액
   //2. 어떤 화폐인지
   //3. 돈 * 환율 = 환전금액
   let amount = document.getElementById("from-input").value;
-  // for(let i = 0; i < amount/)
+  document.getElementById("from-display").textContent = amount;
+
   let convertedAmount = amount * currencyRatio[fromCurrency][toCurrency];
 
   document.getElementById("to-input").value = convertedAmount;
+
+  //입력 금액과 환전 금액 읽어주기
+  document.getElementById("to-display").textContent = convertedAmount + ' ' + currencyRatio[toCurrency].unit;
+  document.getElementById("from-display").textContent = amount + ' ' + currencyRatio[fromCurrency].unit;
+}
+
+//환전 계산 함수(역) 아래->위
+function convertReverse(){
+  //환전 알고리즘
+  //1. base금액
+  //2. 어떤 화폐인지
+  //3. 돈 * 환율 = 환전금액
+  let amount = document.getElementById("to-input").value;
+  document.getElementById("to-display").textContent = amount;
+
+  let convertedAmount = amount * currencyRatio[toCurrency][fromCurrency];
+
+  document.getElementById("from-input").value = convertedAmount;
+
+  //입력 금액과 환전 금액 읽어주기
+  document.getElementById("to-display").textContent = amount + ' ' + currencyRatio[toCurrency].unit;
+  document.getElementById("from-display").textContent = convertedAmount + ' ' + currencyRatio[fromCurrency].unit;
 }
