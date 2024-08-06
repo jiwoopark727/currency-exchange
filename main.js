@@ -1,6 +1,5 @@
-// 남은 작업들 
+// 남은 작업
 // 환율 정보 api로 가져와서 해보기
-// 숫자 4자리식 끊어서 읽어주기
 
 //환율 정보들
 let currencyRatio = {
@@ -134,7 +133,7 @@ function convertReverse(){
 }
 
 
-// //4자리씩 한글로 읽어주고 1000단위에 콤마 찍어주는 함수
+//4자리씩 한글로 읽어주고 1000단위에 콤마 찍어주는 함수
 function numberFormat(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
