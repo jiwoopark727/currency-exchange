@@ -1,8 +1,6 @@
 // 남은 작업들 
-// 1. 숫자를 한국어로 읽어주기 4자리씩 끊어서
-// 3. 환율 정보 api로 가져와서 해보기
-// 4. 소수점은 둘째자리까지만 표기하기
-
+// 환율 정보 api로 가져와서 해보기
+// 숫자 4자리식 끊어서 읽어주기
 
 //환율 정보들
 let currencyRatio = {
@@ -112,8 +110,8 @@ function convert(){
   document.getElementById("to-input").value = convertedAmount;
 
   //입력 금액과 환전 금액 읽어주기
-  document.getElementById("to-display").textContent = convertedAmount + ' ' + currencyRatio[toCurrency].unit;
-  document.getElementById("from-display").textContent = amount + ' ' + currencyRatio[fromCurrency].unit;
+  document.getElementById("to-display").textContent = numberToKorean(convertedAmount) + ' ' + currencyRatio[toCurrency].unit;
+  document.getElementById("from-display").textContent = numberToKorean(amount) + ' ' + currencyRatio[fromCurrency].unit;
 }
 
 //환전 계산 함수(역) 아래->위
@@ -131,29 +129,36 @@ function convertReverse(){
 
 
   //입력 금액과 환전 금액 읽어주기
-  document.getElementById("to-display").textContent = amount + ' ' + currencyRatio[toCurrency].unit;
-  document.getElementById("from-display").textContent = convertedAmount + ' ' + currencyRatio[fromCurrency].unit;
+  document.getElementById("to-display").textContent = numberToKorean(amount) + ' ' + currencyRatio[toCurrency].unit;
+  document.getElementById("from-display").textContent = numberToKorean(convertedAmount) + ' ' + currencyRatio[fromCurrency].unit;
 }
 
 
-// //4자리씩 끊어서 읽어주는 함수 입력 부분 amount
-// function readAmount() {
-//   let readUnit = ['만', '억', '조', '경', '해', '자'];
-//   console.log(readUnit[0]);
-//   let amount = document.getElementById("to-input").value;
-//   // for(let i = 10000; i < )
+// //4자리씩 한글로 읽어주고 1000단위에 콤마 찍어주는 함수
+function numberFormat(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-//   let convertedAmount = amount * currencyRatio[toCurrency][fromCurrency];
+function numberToKorean(number){
+  var inputNumber  = number < 0 ? false : number;
+  var unitWords    = ['', '만', '억', '조', '경', '해', '자'];
+  var splitUnit    = 10000;
+  var splitCount   = unitWords.length;
+  var resultArray  = [];
+  var resultString = '';
 
-//   return "";
-// }
+  for (var i = 0; i < splitCount; i++){
+      var unitResult = (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
+      unitResult = Math.floor(unitResult);
+      if (unitResult > 0){
+          resultArray[i] = unitResult;
+      }
+  }
 
+  for (var i = 0; i < resultArray.length; i++){
+      if(!resultArray[i]) continue;
+      resultString = String(numberFormat(resultArray[i])) + unitWords[i] + resultString;
+  }
 
-// //4자리씩 끊어서 읽어주는 함수 결과 부분 convertedAmount
-// function readConvertedAmount() {
-//   let amount = document.getElementById("to-input").value;
-
-//   let convertedAmount = amount * currencyRatio[toCurrency][fromCurrency];
-
-
-// }
+  return resultString;
+}
