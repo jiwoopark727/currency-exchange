@@ -1,8 +1,7 @@
 // 남은 작업들 
 // 1. 숫자를 한국어로 읽어주기 4자리씩 끊어서
-// 2. 밑에거 바꿔도 위에 적용 되게
-// 3. 폰트어썸 애로우 왜 사라지는지 해결
-// 4. 환율 정보 api로 가져와서 해보기
+// 3. 환율 정보 api로 가져와서 해보기
+// 4. 소수점은 둘째자리까지만 표기하기
 
 
 //환율 정보들
@@ -66,7 +65,7 @@ document.getElementById('to-button').addEventListener('click',function(){
 
 document.querySelectorAll('#from-currency-list a').forEach(menu=>menu.addEventListener("click",function(){
 
-  document.getElementById("from-button").textContent = this.textContent;   //버튼 가져와서 클릭한 메뉴의 값을 텍스트를 교체
+  document.getElementById("from-button").textContent = this.textContent; //버튼 가져와서 클릭한 메뉴의 값을 텍스트를 교체
 
   fromCurrency = this.textContent;   //클릭한 메뉴의 값을 변수에 저장해두기
 
@@ -75,6 +74,7 @@ document.querySelectorAll('#from-currency-list a').forEach(menu=>menu.addEventLi
   document.getElementById('from-currency-list').style.display = "none";   //리스트에서 화폐 하나 선택하면 리스트 닫기
 
   convert();    //버튼 누를 때 마다도 환전 최신화
+  convertReverse();     //아래 수정해도 위에 환전 최신화
 }))
 
 document.querySelectorAll('#to-currency-list a').forEach(menu=>menu.addEventListener("click",function(){
@@ -91,6 +91,7 @@ document.querySelectorAll('#to-currency-list a').forEach(menu=>menu.addEventList
   convertReverse();     //아래 수정해도 위에 환전 최신화
 }))
 
+//디폴트값 1 인풋 입력창 포커스될 때 지우기
 function clearInput(input) {
   if (input.value === '1') {
       input.value = '';
@@ -106,7 +107,7 @@ function convert(){
   let amount = document.getElementById("from-input").value;
   document.getElementById("from-display").textContent = amount;
 
-  let convertedAmount = amount * currencyRatio[fromCurrency][toCurrency];
+  let convertedAmount = (amount * currencyRatio[fromCurrency][toCurrency]).toFixed(2);
 
   document.getElementById("to-input").value = convertedAmount;
 
@@ -124,11 +125,35 @@ function convertReverse(){
   let amount = document.getElementById("to-input").value;
   document.getElementById("to-display").textContent = amount;
 
-  let convertedAmount = amount * currencyRatio[toCurrency][fromCurrency];
+  let convertedAmount = (amount * currencyRatio[toCurrency][fromCurrency]).toFixed(2);
 
   document.getElementById("from-input").value = convertedAmount;
+
 
   //입력 금액과 환전 금액 읽어주기
   document.getElementById("to-display").textContent = amount + ' ' + currencyRatio[toCurrency].unit;
   document.getElementById("from-display").textContent = convertedAmount + ' ' + currencyRatio[fromCurrency].unit;
 }
+
+
+// //4자리씩 끊어서 읽어주는 함수 입력 부분 amount
+// function readAmount() {
+//   let readUnit = ['만', '억', '조', '경', '해', '자'];
+//   console.log(readUnit[0]);
+//   let amount = document.getElementById("to-input").value;
+//   // for(let i = 10000; i < )
+
+//   let convertedAmount = amount * currencyRatio[toCurrency][fromCurrency];
+
+//   return "";
+// }
+
+
+// //4자리씩 끊어서 읽어주는 함수 결과 부분 convertedAmount
+// function readConvertedAmount() {
+//   let amount = document.getElementById("to-input").value;
+
+//   let convertedAmount = amount * currencyRatio[toCurrency][fromCurrency];
+
+
+// }
